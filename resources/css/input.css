@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Urbanist', sans-serif;
+  padding-top: 2rem;      
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;  
+  padding-right: 1.5rem;
+}
+
+input {
+  @apply w-full h-12 rounded-3xl ps-12 focus:outline-none focus:ring-2 focus:ring-primary text-gray;
+}
+
+.btn-primary {
+  @apply bg-primary py-3 rounded-full text-white font-semibold border-2 border-transparent
+         hover:bg-transparent hover:text-primary hover:border-primary transition;
+}
+
+.btn-line {
+  @apply border-2 border-primary text-primary py-3 rounded-full font-semibold bg-transparent
+         hover:bg-primary hover:text-white transition;
+}
