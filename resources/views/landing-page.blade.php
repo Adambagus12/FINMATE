@@ -1,69 +1,210 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Welcome To FinMate</title>
+@extends('base')
 
-    @vite(['resources/css/input.css', 'resources/js/main.js'])
+@section('content')
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-    <main>
-        <header class="py-2 px-4 lg:py-1 border-b-2 border-primary">
-            <div class="flex items-center justify-between">
-                <img src="{{ asset('assets/logo.png') }}" alt="Logo" class="w-28 h-auto" />
+<!-- Hero -->
+<section id="home" class="py-8 flex flex-col lg:flex-row-reverse lg:items-center lg:justify-between lg:min-h-screen lg:px-16">
+    <article class="items-center">
+        <img class="lg:scale-125" src="{{ asset('assets/finMate.png') }}" alt="">
+    </article>
+    <!-- kanan -->
+    <article class="items-center text-center lg:text-left">
+        <h1 class="text-3xl font-bold text-primary mb-6 lg:text-5xl lg:w-4/5 ">Take Control of Your Money, The
+            Smart Way.</h1>
+        <h1 class="text-3xl font-semibold text-black lg:w-4/5 lg:text-5xl">Personalized, Practical, and Powered
+            by AI.</h1>
+        <p class="mt-5 text-gray font-semibold ">FinMate helps Gen Z manage monthly budgets with ease.</p>
+        <button class="btn-primary w-full mt-8 lg:w-1/4">Learn More</button>
+    </article>
+    <!-- Kiri -->
+</section>
+<!-- End Hero -->
 
-                <nav class="hidden lg:flex gap-8 items-center">
-                    <a href="#" class="text-black font-medium hover:text-primary">Home</a>
-                    <a href="#" class="text-black font-medium hover:text-primary">About Us</a>
-                    <a href="#" class="text-black font-medium hover:text-primary">Testimonials</a>
-                    <a href="#" class="text-black font-medium hover:text-primary">Contact Us</a>
-                </nav>
+<!-- Our Fitur -->
+<section id="fitur" class="mt-8 lg:px-16 lg:min-h-screen">
+    <article class="py-8">
+        <h2
+            class="text-center text-xl font-semibold italic lg:text-3xl lg:w-3/4 lg:text-left lg:justify-items-start">
+            Built to Make Budgeting Effortless for <span class="text-primary"> Gen Z.</span> Start managing your
+            money with ease, anytime, anywhere.</h2>
 
-                <div class="flex items-center gap-4">
-                    <div class="hidden lg:flex gap-3">
-                        <a href="{{ url('/login') }}" class="px-8 btn-primary">Login</a>
-                        <a href="{{ url('/register') }}" class="px-6 btn-line">Register</a>
+
+        <div class="mt-8 flex gap-6 flex-wrap justify-center block lg:justify-between lg:mt-20">
+            <div class="card-fitur">
+                <div>
+                    <div class="text-blue-600 text-3xl mb-4">
+                        <i class="fa-solid fa-brain"></i> <!-- Ganti icon sesuai card -->
                     </div>
-
-                    <button id="menu-toggle" class="lg:hidden text-primary text-2xl">
-                        <i class="fa-solid fa-bars"></i>
+                    <h3 class="text-lg font-semibold mb-2 lg:text-xl">Smart Budget Suggestions</h3>
+                    <p class="text-sm text-gray-600">
+                        Automatically allocate your income based on your needs and lifestyle.
+                    </p>
+                </div>
+                <div class="mt-4">
+                    <button
+                        class="bg-blue-500 text-white text-sm py-2 px-4 rounded-md hover:bg-blue-600 w-full">
+                        Talk With Us
                     </button>
                 </div>
             </div>
-
-            <nav id="mobile-menu" class="hidden flex flex-col gap-3 mt-4 rounded-xl p-4 lg:hidden">
-                <a href="#" class="text-black font-semibold hover:text-primary">Home</a>
-                <a href="#" class="text-black font-semibold hover:text-primary">About Us</a>
-                <a href="#" class="text-black font-semibold hover:text-primary">Testimonials</a>
-                <a href="#" class="text-black font-semibold hover:text-primary">Contact Us</a>
-
-                <div class="flex flex-col gap-2 mt-4">
-                    <a href="{{ url('/login') }}" class="btn-primary text-center">Login</a>
-                    <a href="{{ url('/register') }}" class="btn-line text-center">Register</a>
+            <div class="card-fitur">
+                <div>
+                    <div class="text-blue-600 text-3xl mb-4">
+                        <i class="fa-solid fa-chart-simple"></i> <!-- Ganti icon sesuai card -->
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Personalized Monthly Insights</h3>
+                    <p class="text-sm text-gray-600">
+                        Get tips and alerts based on your spending habits.
+                    </p>
                 </div>
-            </nav>
-        </header>
+                <div class="mt-4">
+                    <button
+                        class="bg-blue-500 text-white text-sm py-2 px-4 rounded-md hover:bg-blue-600 w-full">
+                        Talk With Us
+                    </button>
+                </div>
+            </div>
+            <div class="card-fitur">
+                <div>
+                    <div class="text-blue-600 text-3xl mb-4">
+                        <i class="fa-solid fa-gauge"></i> <!-- Ganti icon sesuai card -->
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Easy-to-Use Dashboard</h3>
+                    <p class="text-sm text-gray-600">
+                        Track income, expenses, and goals — all in one place.
+                </div>
+                <div class="mt-4">
+                    <button
+                        class="bg-blue-500 text-white text-sm py-2 px-4 rounded-md hover:bg-blue-600 w-full">
+                        Talk With Us
+                    </button>
+                </div>
+            </div>
+            <div class="card-fitur">
+                <div>
+                    <div class="text-blue-600 text-3xl mb-4">
+                        <i class="fa-solid fa-comments-dollar"></i> <!-- Ganti icon sesuai card -->
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Financial Education</h3>
+                    <p class="text-sm text-gray-600">
+                        Learn simple budgeting strategies designed for Gen Z.
+                    </p>
+                </div>
+                <div class="mt-4">
+                    <button
+                        class="bg-blue-500 text-white text-sm py-2 px-4 rounded-md hover:bg-blue-600 w-full">
+                        Talk With Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+<!-- end out fitur -->
 
-        <section class="py-8 flex flex-col lg:flex-row-reverse lg:items-center lg:justify-between lg:min-h-screen lg:py-20">
-            <article class="items-center">
-                <img src="{{ asset('assets/finMate.png') }}" alt="" />
-            </article>
-           
-            <article class="items-center text-center">
-                <h1 class="text-2xl font-semibold text-primary mb-4">Take Control of Your Money, The Smart Way.</h1>
-                <h1 class="text-2xl font-semibold text-black">Personalized, Practical, and Powered by AI.</h1>
-                <p class="mt-5 text-gray font-semibold">FinMate helps Gen Z manage monthly budgets with ease.</p>
-                <button class="btn-primary w-full mt-6">Learn More</button>
-            </article>
-        
-        </section>
-        
-    </main>
-</body>
-</html>
+
+<!-- About us -->
+<section id="about" class="bg-primary -mx-6 px-6 py-16 flex flex-col items-center">
+    <!-- Right side (teks) -->
+    <article class="text-center lg:w-2/5">
+        <h2 class="text-2xl font-semibold italic text-white lg:text-3xl">FinMate YOUR PARTNER TO DEAL</h2>
+        <p class="mt-3 text-white italic lg:text-lg">FinMate is a trusted platform dedicated to helping individuals and communities manage their finances with confidence. We combine technology, innovation, and human understanding to deliver financial tools and guidance that truly make a difference.</p>
+    </article>
+
+</section>
+<!-- End About us -->
+
+
+<!-- Testimonials -->
+<section id="testimonials" class="py-16">
+    <article>
+        <h1 class="text-3xl font-bold text-center">What <span class="text-primary">Our Client</span> Says</h1>
+        <p class="mt-2 font-semibold text-gray text-center">Hear Directly Our Satisfied Client</p>
+    </article>
+
+    <article class="mt-12 flex flex-col gap-8 lg:flex-row lg:gap-8 lg:px-16 lg:mt-20 lg:mb-20 lg:justify-center">
+        <div class="bg-secondary flex flex-col justify-between h-full py-4 px-6 rounded-xl shadow-md lg:w-1/5 min-h-[300px]">
+            <div>
+                <div class="flex justify-end">
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                </div>
+                <p class="mt-6 text-lg">
+                    “FinMate really changed the way I manage my monthly expenses. The app is simple and effective!”
+                </p>
+            </div>
+
+            <!-- USER -->
+            <div class="flex items-center gap-3 pt-6">
+                <img src="../assets/pp.png" alt="profile" width="30" class="rounded-full">
+                <p class="text-gray font-semibold text-sm">Aulia Rahman</p>
+            </div>
+        </div>
+        <div class="bg-secondary flex flex-col justify-between h-full py-4 px-6 rounded-xl shadow-md lg:w-1/5 min-h-[300px]">
+            <div>
+                <div class="flex justify-end">
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                </div>
+                <p class="mt-6 text-lg">
+                    “Layanan FinMate sangat membantu saya mengatur anggaran keluarga setiap bulan. Super recommended!”
+                </p>
+            </div>
+
+            <!-- USER -->
+            <div class="flex items-center gap-3 pt-6">
+                <img src="../assets/pp.png" alt="profile" width="30" class="rounded-full">
+                <p class="text-gray font-semibold text-sm">Cecep</p>
+            </div>
+        </div>
+        <div class="bg-secondary flex flex-col justify-between h-full py-4 px-6 rounded-xl shadow-md lg:w-1/5 min-h-[300px]">
+            <div>
+                <div class="flex justify-end">
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                </div>
+                <p class="mt-6 text-lg">
+                    “Thanks to FinMate, I was finally able to track my spending and save money every month.” </p>
+            </div>
+
+            <!-- USER -->
+            <div class="flex items-center gap-3 pt-6">
+                <img src="../assets/pp.png" alt="profile" width="30" class="rounded-full">
+                <p class="text-gray font-semibold text-sm">Wida Mudrikah</p>
+            </div>
+        </div>
+        <div class="bg-secondary flex flex-col justify-between h-full py-4 px-6 rounded-xl shadow-md lg:w-1/5 min-h-[300px]">
+            <div>
+                <div class="flex justify-end">
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                </div>
+                <p class="mt-6 text-lg">
+                    “FinMate really changed the way I manage my monthly expenses. The app is simple and effective!”
+                </p>
+            </div>
+
+            <!-- USER -->
+            <div class="flex items-center gap-3 pt-6">
+                <img src="../assets/pp.png" alt="profile" width="30" class="rounded-full">
+                <p class="text-gray font-semibold text-sm">Jhon Due</p>
+            </div>
+        </div>
+    </article>
+</section>
+<!-- End Testimonials -->
+
+
+@endsection

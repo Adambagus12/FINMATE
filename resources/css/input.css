@@ -5,7 +5,6 @@
 body {
   font-family: 'Urbanist', sans-serif;
   padding-top: 2rem;      
-  padding-bottom: 2rem;
   padding-left: 1.5rem;  
   padding-right: 1.5rem;
 }
@@ -22,4 +21,8 @@ input {
 .btn-line {
   @apply border-2 border-primary text-primary py-3 rounded-full font-semibold bg-transparent
          hover:bg-primary hover:text-white transition;
+}
+
+.card-fitur {
+  @apply bg-white rounded-xl shadow-md p-6 flex flex-col justify-between w-64 h-80 lg:w-72 lg:h-96 border border-transparent hover:border-blue-500 transition-all duration-300 hover:scale-105 lg:px-8;
 }

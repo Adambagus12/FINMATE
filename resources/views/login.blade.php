@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
 <body class="min-h-screen flex flex-col">
-    @include('partials.header')
 
     <main class="flex flex-col gap-5 lg:flex-row lg:justify-between lg:px-32 mt-6">
         <section class="flex flex-col gap-5 lg:w-1/2">

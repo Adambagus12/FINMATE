@@ -1,10 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
+const avatarBtn = document.getElementById('avatar-btn');
+const dropdownMenu = document.getElementById('dropdown-menu');
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
 
-  if(toggle && menu) {
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-  }
-});
+if (avatarBtn && dropdownMenu) {
+  document.addEventListener('click', function (e) {
+    if (avatarBtn.contains(e.target)) {
+      dropdownMenu.classList.toggle('hidden');
+    } else if (!dropdownMenu.contains(e.target)) {
+      dropdownMenu.classList.add('hidden');
+    }
+  });
+}
+
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener('click', function () {
+    mobileMenu.classList.toggle('hidden');
+  });
+}
+

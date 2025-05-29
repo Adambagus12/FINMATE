@@ -1,47 +1,88 @@
-<header class="py-2 px-4 lg:py-1 border-b-2 border-primary">
-    <div class="flex items-center justify-between">
-        <img src="{{ asset('assets/logo.png') }}" alt="Logo" class="w-28 h-auto" />
+<header class="py-2 px-4 lg:py-1 border-b-2 border-primary bg-white">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <a href="{{ url('/') }}" class="flex-shrink-0">
+            <img src="{{ asset('assets/logo.png') }}" alt="FinMate Logo" class="w-28 h-auto" />
+        </a>
 
+        <!-- Desktop Navigation (hanya tampil untuk guest) -->
+        @guest
         <nav class="hidden lg:flex gap-8 items-center">
             <a href="{{ url('/') }}" class="text-black font-medium hover:text-primary">Home</a>
             <a href="#" class="text-black font-medium hover:text-primary">About Us</a>
             <a href="#" class="text-black font-medium hover:text-primary">Testimonials</a>
             <a href="#" class="text-black font-medium hover:text-primary">Contact Us</a>
         </nav>
+        @endguest
 
+        <!-- User Section -->
         <div class="flex items-center gap-4">
-            <div class="hidden lg:flex gap-3">
-                @guest
+            <!-- Authenticated User -->
+            @auth
+                @php
+                    $name = Auth::user()->name;
+                    $avatarUrl = "https://ui-avatars.com/api/?name=" . urlencode($name) . "&background=0D8ABC&color=fff";
+                @endphp
+
+                <div class="relative flex items-center gap-3">
+                    <img src="{{ $avatarUrl }}" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-primary cursor-pointer" id="avatar-btn">
+                    <p class="text-gray-800 font-semibold hidden lg:block">Hi, {{ $name }}</p>
+
+                    <!-- Dropdown -->
+                    <div id="dropdown-menu" class="hidden absolute right-0 mt-14 w-40 bg-white border rounded-md shadow-lg z-50">
+                        <div class="px-4 py-2 text-sm text-gray-700 border-b">{{ $name }}</div>
+
+                        <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Dashboard</a>
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            @endauth
+
+            <!-- Guest -->
+            @guest
+                <div class="hidden lg:flex gap-3">
                     <a href="{{ route('login') }}" class="px-8 btn-primary">Login</a>
                     <a href="{{ route('register') }}" class="px-6 btn-line">Register</a>
-                @else
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="btn-line px-6 py-3 rounded-full font-semibold">Logout</button>
-                    </form>
-                @endguest
-            </div>
+                </div>
+            @endguest
+
+            <!-- Mobile toggle -->
             <button id="menu-toggle" class="lg:hidden text-primary text-2xl">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </div>
 
-    <nav id="mobile-menu" class="hidden flex flex-col gap-3 mt-4 rounded-xl p-4 lg:hidden">
-        <a href="{{ url('/') }}" class="text-black font-semibold hover:text-primary">Home</a>
-        <a href="#" class="text-black font-semibold hover:text-primary">About Us</a>
-        <a href="#" class="text-black font-semibold hover:text-primary">Testimonials</a>
-        <a href="#" class="text-black font-semibold hover:text-primary">Contact Us</a>
+    <!-- Mobile Navigation -->
+    <nav id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200 mt-2">
+        <div class="px-4 py-3 space-y-2">
+            <a href="{{ url('/') }}" class="text-black font-semibold hover:text-primary block">Home</a>
+            <a href="#" class="text-black font-semibold hover:text-primary block">About Us</a>
+            <a href="#" class="text-black font-semibold hover:text-primary block">Testimonials</a>
+            <a href="#" class="text-black font-semibold hover:text-primary block">Contact Us</a>
 
-        <div class="flex flex-col gap-2 mt-4">
+            <!-- Auth -->
+            @auth
+                <div class="mt-4 space-y-2">
+                    <p class="text-gray-800 font-semibold">Hi, {{ Auth::user()->name }}</p>
+                    <a href="{{ route('dashboard') }}" class="block btn-line text-center">My Dashboard</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="w-full btn-line text-center">Logout</button>
+                    </form>
+                </div>
+            @endauth
+
+            <!-- Guest -->
             @guest
-                <a href="{{ route('login') }}" class="btn-primary text-center">Login</a>
-                <a href="{{ route('register') }}" class="btn-line text-center">Register</a>
-            @else
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="btn-line">Logout</button>
-                </form>
+                <div class="mt-4 space-y-2">
+                    <a href="{{ route('login') }}" class="block btn-primary text-center">Login</a>
+                    <a href="{{ route('register') }}" class="block btn-line text-center">Register</a>
+                </div>
             @endguest
         </div>
     </nav>

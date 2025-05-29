@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,9 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
-<body class="min-h-screen flex flex-col">
-    @include('partials.header')
 
+<body class="min-h-screen flex flex-col">
     <main class="flex flex-col gap-5 lg:flex-row lg:justify-between lg:px-32 mt-6">
         <section class="flex flex-col gap-5 lg:w-1/2">
             <article class="bg-secondary py-8 px-6 rounded-2xl lg:h-full">
@@ -22,20 +22,20 @@
 
                 {{-- Notifikasi sukses --}}
                 @if(session('success'))
-                    <div class="mb-4 p-3 bg-green-200 text-green-800 rounded">
-                        {{ session('success') }}
-                    </div>
+                <div class="mb-4 p-3 bg-green-200 text-green-800 rounded">
+                    {{ session('success') }}
+                </div>
                 @endif
 
                 {{-- Error Validasi --}}
                 @if($errors->any())
-                    <div class="mb-4 p-3 bg-red-200 text-red-800 rounded">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>- {{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div class="mb-4 p-3 bg-red-200 text-red-800 rounded">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                        <li>- {{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endif
 
                 <form method="POST" action="{{ route('register') }}" class="pt-10 flex flex-col gap-5 lg:gap-7">
@@ -90,4 +90,5 @@
         }
     </script>
 </body>
+
 </html>

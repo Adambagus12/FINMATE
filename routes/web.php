@@ -20,5 +20,11 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');  // buat file blade dashboard nanti
     })->name('dashboard');
 
+    Route::get('/calculate', function () {
+        return view('calculate');  // buat file blade dashboard nanti
+    })->name('calculate');
+
+
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
