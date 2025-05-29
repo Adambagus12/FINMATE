@@ -10,7 +10,7 @@ body {
 }
 
 input {
-  @apply w-full h-12 rounded-3xl ps-12 focus:outline-none focus:ring-2 focus:ring-primary text-gray;
+    @apply w-full h-12 rounded-3xl ps-12 focus:outline-none focus:ring-2 focus:ring-primary text-gray;
 }
 
 .btn-primary {
