@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="py-12 ">
-    <h1 class="text-2xl font-semibold text-primary text-center lg:text-left lg:px-28 lg:text-3xl">Smart Budgeting Made Simple</h1>
+    <h1 class="text-2xl font-semibold text-primary text-center lg:text-left lg:px-28">Smart Budgeting Made Simple</h1>
     <p class="mt-4 text-center font-semibold italic lg:text-left lg:px-28">Input your income, add your monthly needs, and let FinMate
         do the budgeting for you.</p>
 </section>

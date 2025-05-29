@@ -41,22 +41,22 @@
                 <form method="POST" action="{{ route('register') }}" class="pt-10 flex flex-col gap-5 lg:gap-7">
                     @csrf
                     <div class="relative">
-                        <input class="rounded-3xl" type="text" name="name" placeholder="Nama lengkap" required autofocus class="w-full pl-12" />
+                        <input type="text" name="name" placeholder="Nama lengkap" required autofocus class="w-full pl-12" />
                         <i class="fa-solid fa-user text-primary text-2xl absolute top-3 left-3"></i>
                     </div>
                     <div class="relative">
-                        <input class="rounded-3xl" type="email" name="email" placeholder="Email" required class="w-full pl-12" />
+                        <input type="email" name="email" placeholder="Email" required class="w-full pl-12" />
                         <i class="fa-solid fa-envelope text-primary text-2xl absolute top-3 left-3"></i>
                     </div>
                     <div class="relative">
-                        <input class="rounded-3xl" type="password" id="password" name="password" placeholder="Password" required class="w-full pl-12" />
+                        <input type="password" id="password" name="password" placeholder="Password" required class="w-full pl-12" />
                         <i class="fa-solid fa-lock text-primary text-2xl absolute top-3 left-3"></i>
                         <button type="button" onclick="togglePassword('password', this)" class="absolute right-3 top-3 text-gray-500">
                             <i class="fa-solid fa-eye"></i>
                         </button>
                     </div>
                     <div class="relative">
-                        <input class="rounded-3xl" type="password" id="password_confirmation" name="password_confirmation" placeholder="Konfirmasi Password" required class="w-full pl-12" />
+                        <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Konfirmasi Password" required class="w-full pl-12" />
                         <i class="fa-solid fa-lock text-primary text-2xl absolute top-3 left-3"></i>
                         <button type="button" onclick="togglePassword('password_confirmation', this)" class="absolute right-3 top-3 text-gray-500">
                             <i class="fa-solid fa-eye"></i>
