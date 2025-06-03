@@ -1,9 +1,9 @@
 <!-- footer -->
 <footer class="-mx-6 bg-primary relative px-6 py-12 mt-20 flex flex-col items-center">
     <div id="contact" class="bg-secondary py-8 px-5 rounded-lg absolute -top-1/4 flex flex-col w-5/6 lg:w-2/3">
-        <h1 class="text-primary font-semibold mb-4 text-xl text-center lg:text-2xl">Ready To Join</h1>
+        <h1 class="text-primary font-semibold mb-4 text-xl text-center lg:text-2xl">Yuk, Jadi Bagian dari FinMate!</h1>
         <div class="flex lg:flex-row lg:justify-between lg:gap-x-10 lg:mt-6 lg:items-center">
-            <input class="w-full h-10" type="text" placeholder="Enter email to subcribe">
+            <input class="w-full h-10" type="text" placeholder="Masukin email untuk bergabung">
             <img class="hidden lg:block" src="../assets/logo.png" alt="">
         </div>
     </div>

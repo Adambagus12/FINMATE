@@ -8,10 +8,10 @@
         <!-- Desktop Navigation (hanya tampil untuk guest) -->
         @guest
         <nav class="hidden lg:flex gap-8 items-center">
-            <a href="{{ url('/') }}" class="text-black font-medium hover:text-primary">Home</a>
-            <a href="#" class="text-black font-medium hover:text-primary">About Us</a>
-            <a href="#" class="text-black font-medium hover:text-primary">Testimonials</a>
-            <a href="#" class="text-black font-medium hover:text-primary">Contact Us</a>
+            <a href="{{ url('/') }}" class="text-black font-medium hover:text-primary">Beranda</a>
+            <a href="#" class="text-black font-medium hover:text-primary">Tentang Kami</a>
+            <a href="#" class="text-black font-medium hover:text-primary">Testimoni</a>
+            <a href="#" class="text-black font-medium hover:text-primary">Kontak Kami</a>
         </nav>
         @endguest
 
@@ -32,11 +32,11 @@
                     <div id="dropdown-menu" class="hidden absolute right-0 mt-14 w-40 bg-white border rounded-md shadow-lg z-50">
                         <div class="px-4 py-2 text-sm text-gray-700 border-b">{{ $name }}</div>
 
-                        <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard Saya</a>
 
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
+                            <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Keluar</button>
                         </form>
                     </div>
                 </div>
@@ -45,8 +45,8 @@
             <!-- Guest -->
             @guest
                 <div class="hidden lg:flex gap-3">
-                    <a href="{{ route('login') }}" class="px-8 btn-primary">Login</a>
-                    <a href="{{ route('register') }}" class="px-6 btn-line">Register</a>
+                    <a href="{{ route('login') }}" class="px-8 btn-primary">Masuk</a>
+                    <a href="{{ route('register') }}" class="px-6 btn-line">Daftar</a>
                 </div>
             @endguest
 
@@ -60,19 +60,19 @@
     <!-- Mobile Navigation -->
     <nav id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200 mt-2">
         <div class="px-4 py-3 space-y-2">
-            <a href="{{ url('/') }}" class="text-black font-semibold hover:text-primary block">Home</a>
-            <a href="#" class="text-black font-semibold hover:text-primary block">About Us</a>
-            <a href="#" class="text-black font-semibold hover:text-primary block">Testimonials</a>
-            <a href="#" class="text-black font-semibold hover:text-primary block">Contact Us</a>
+            <a href="{{ url('/') }}" class="text-black font-semibold hover:text-primary block">Beranda</a>
+            <a href="#" class="text-black font-semibold hover:text-primary block">Tentang Kami</a>
+            <a href="#" class="text-black font-semibold hover:text-primary block">Testimoni</a>
+            <a href="#" class="text-black font-semibold hover:text-primary block">Kontak Kami</a>
 
             <!-- Auth -->
             @auth
                 <div class="mt-4 space-y-2">
                     <p class="text-gray-800 font-semibold">Hi, {{ Auth::user()->name }}</p>
-                    <a href="{{ route('dashboard') }}" class="block btn-line text-center">My Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="block btn-line text-center">Dashboard Saya</a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="w-full btn-line text-center">Logout</button>
+                        <button type="submit" class="w-full btn-line text-center">Keluar</button>
                     </form>
                 </div>
             @endauth
@@ -80,8 +80,8 @@
             <!-- Guest -->
             @guest
                 <div class="mt-4 space-y-2">
-                    <a href="{{ route('login') }}" class="block btn-primary text-center">Login</a>
-                    <a href="{{ route('register') }}" class="block btn-line text-center">Register</a>
+                    <a href="{{ route('login') }}" class="block btn-primary text-center">Masuk</a>
+                    <a href="{{ route('register') }}" class="block btn-line text-center">Daftar</a>
                 </div>
             @endguest
         </div>
