@@ -50,48 +50,51 @@
                 <label class="font-semibold lg:text-xl" for="age">Usia</label>
                 <input id="age" class="rounded-3xl" type="number" name="age" value="{{ old('age') }}" required>
             </div>
-            
+
             <!-- Jenis Kelamin -->
             <div class="flex flex-col gap-3 mb-4">
-                <label class="font-semibold lg:text-xl">Jenis Kelamin</label>
-                <div class="flex flex-wrap gap-4">
-                    <label><input type="radio" name="gender" value="Female" {{ old('gender') == 'Female' ? 'checked' : '' }}> Wanita</label>
-                    <label><input type="radio" name="gender" value="Male" {{ old('gender') == 'Male' ? 'checked' : '' }}> Pria</label>
-                    <label><input type="radio" name="gender" value="Non-binary" {{ old('gender') == 'Non-binary' ? 'checked' : '' }}> Non-biner</label>
-                </div>
+                <label class="font-semibold lg:text-xl" for="gender">Jenis Kelamin</label>
+                <select id="gender" name="gender" class="rounded-3xl">
+                    <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Pria</option>
+                    <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Wanita</option>
+                </select>
             </div>
 
             <!-- Tingkat Pendidikan -->
             <div class="flex flex-col gap-3 mb-4">
-                <label class="font-semibold rounded-3xl lg:text-xl">Tingkat Pendidikan</label>
-                <div class="flex flex-wrap gap-4">
-                    <label><input type="radio" name="year_in_school" value="Freshman" {{ old('year_in_school') == 'Freshman' ? 'checked' : '' }}> Tahun Pertama</label>
-                    <label><input type="radio" name="year_in_school" value="Sophomore" {{ old('year_in_school') == 'Sophomore' ? 'checked' : '' }}> Tahun Kedua</label>
-                    <label><input type="radio" name="year_in_school" value="Junior" {{ old('year_in_school') == 'Junior' ? 'checked' : '' }}> Tahun Ketiga</label>
-                    <label><input type="radio" name="year_in_school" value="Senior" {{ old('year_in_school') == 'Senior' ? 'checked' : '' }}> Tahun Keempat</label>
-                </div>
+                <label class="font-semibold lg:text-xl" for="year_in_school">Tingkat Pendidikan</label>
+                <select id="year_in_school" name="year_in_school" class="rounded-3xl">
+                    <option value="Freshman" {{ old('year_in_school') == 'Freshman' ? 'selected' : '' }}>Tahun Pertama</option>
+                    <option value="Sophomore" {{ old('year_in_school') == 'Sophomore' ? 'selected' : '' }}>Tahun Kedua</option>
+                    <option value="Junior" {{ old('year_in_school') == 'Junior' ? 'selected' : '' }}>Tahun Ketiga</option>
+                    <option value="Senior" {{ old('year_in_school') == 'Senior' ? 'selected' : '' }}>Tahun Keempat</option>
+                </select>
             </div>
 
             <!-- Jurusan -->
             <div class="flex flex-col gap-3 mb-4">
-                <label class="font-semibold rounded-3xl lg:text-xl">Jurusan</label>
-                <div class="flex flex-wrap gap-4">
-                    <label><input type="radio" name="major" value="Biology" {{ old('major') == 'Biology' ? 'checked' : '' }}> Biologi</label>
-                    <label><input type="radio" name="major" value="Computer Science" {{ old('major') == 'Computer Science' ? 'checked' : '' }}> Ilmu Komputer</label>
-                    <label><input type="radio" name="major" value="Economics" {{ old('major') == 'Economics' ? 'checked' : '' }}> Ekonomi</label>
-                    <label><input type="radio" name="major" value="Engineering" {{ old('major') == 'Engineering' ? 'checked' : '' }}> Teknik</label>
-                    <label><input type="radio" name="major" value="Psychology" {{ old('major') == 'Psychology' ? 'checked' : '' }}> Psikologi</label>
-                </div>
+                <label class="font-semibold lg:text-xl" for="major">Jurusan</label>
+                <select id="major" name="major" class="rounded-3xl">
+                    <option value="Engineering" {{ old('major') == 'Engineering' ? 'selected' : '' }}>Teknik</option>
+                    <option value="Business" {{ old('major') == 'Business' ? 'selected' : '' }}>Bisnis</option>
+                    <option value="Social Sciences" {{ old('major') == 'Social Sciences' ? 'selected' : '' }}>Ilmu Sosial</option>
+                    <option value="Psychology" {{ old('major') == 'Psychology' ? 'selected' : '' }}>Psikologi</option>
+                    <option value="Computer Science" {{ old('major') == 'Computer Science' ? 'selected' : '' }}>Ilmu Komputer</option>
+                    <option value="Biology" {{ old('major') == 'Biology' ? 'selected' : '' }}>Biologi</option>
+                    <option value="Economics" {{ old('major') == 'Economics' ? 'selected' : '' }}>Ekonomi</option>
+                    <option value="Mathematics" {{ old('major') == 'Mathematics' ? 'selected' : '' }}>Matematika</option>
+                    <option value="Information Systems" {{ old('major') == 'Information Systems' ? 'selected' : '' }}>Sistem Informasi</option>
+                </select>
             </div>
 
             <!-- Metode Pembayaran Favorit -->
             <div class="flex flex-col gap-3 mb-4">
-                <label class="font-semibold rounded-3xl lg:text-xl">Metode Pembayaran Favorit</label>
-                <div class="flex flex-wrap gap-4">
-                    <label><input type="radio" name="preferred_payment_method" value="Cash" {{ old('preferred_payment_method') == 'Cash' ? 'checked' : '' }}> Tunai</label>
-                    <label><input type="radio" name="preferred_payment_method" value="Credit/Debit Card" {{ old('preferred_payment_method') == 'Credit/Debit Card' ? 'checked' : '' }}> Kartu Kredit/Debit</label>
-                    <label><input type="radio" name="preferred_payment_method" value="Mobile Payment App" {{ old('preferred_payment_method') == 'Mobile Payment App' ? 'checked' : '' }}> Aplikasi Pembayaran</label>
-                </div>
+                <label class="font-semibold lg:text-xl" for="preferred_payment_method">Metode Pembayaran Favorit</label>
+                <select id="preferred_payment_method" name="preferred_payment_method" class="rounded-3xl">
+                    <option value="Cash" {{ old('preferred_payment_method') == 'Cash' ? 'selected' : '' }}>Tunai</option>
+                    <option value="E-wallet" {{ old('preferred_payment_method') == 'E-wallet' ? 'selected' : '' }}>E-wallet</option>
+                    <option value="Credit Card" {{ old('preferred_payment_method') == 'Credit Card' ? 'selected' : '' }}>Kartu Kredit</option>
+                </select>
             </div>
 
             <!-- Tombol Submit -->
@@ -103,7 +106,8 @@
     <article class="px-6 py-10 rounded-lg shadow-md bg-secondary lg:w-full">
         <p class="mb-8 font-semibold text-center lg:text-xl">Rincian Budget Bulanan Kamu</p>
         <div id="result-container">
-            @if(isset($result) && is_array($result))
+            @php $result = session('result'); @endphp
+            @if(is_array($result))
                 <div class="p-4 mt-4 text-black bg-white border rounded">
                     <h3 class="mb-2 text-lg font-bold">Hasil Prediksi Budget:</h3>
                     <ul>

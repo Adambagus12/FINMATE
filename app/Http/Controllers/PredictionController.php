@@ -22,42 +22,42 @@ class PredictionController extends Controller
      */
     public function predict(Request $request)
     {
-        // Validasi dasar untuk memastikan input yang diperlukan ada
         $request->validate([
             'monthly_income' => 'required|numeric',
             'financial_aid' => 'required|in:0,1',
             'age' => 'required|integer',
-            'gender' => 'required|string',
-            'year_in_school' => 'required|string',
-            'major' => 'required|string',
-            'preferred_payment_method' => 'required|string',
+            'gender' => 'required|in:Male,Female',
+            'year_in_school' => 'required|in:Freshman,Sophomore,Junior,Senior',
+            'major' => 'required|in:Engineering,Business,Social Sciences,Psychology,Computer Science,Biology,Economics,Mathematics,Information Systems',
+            'preferred_payment_method' => 'required|in:Cash,E-wallet,Credit Card',
         ]);
 
         try {
-            // 1. Siapkan data dasar
             $inputData = [
-                'monthly_income' => (int)$request->input('monthly_income'),
-                'financial_aid' => (int)$request->input('financial_aid'),
-                'age' => (int)$request->input('age'),
+                'monthly_income' => (int) $request->input('monthly_income'),
+                'financial_aid' => (int) $request->input('financial_aid'),
+                'age' => (int) $request->input('age'),
             ];
 
-            // 2. Transformasi input form menjadi format One-Hot Encoded
-            $this->transformInput($request, $inputData, 'gender', ['Female', 'Male', 'Non-binary']);
+            // Transformasi dropdown menjadi format One-Hot Encoding
+            $this->transformInput($request, $inputData, 'gender', ['Male', 'Female']);
             $this->transformInput($request, $inputData, 'year_in_school', ['Freshman', 'Sophomore', 'Junior', 'Senior']);
-            $this->transformInput($request, $inputData, 'major', ['Biology', 'Computer Science', 'Economics', 'Engineering', 'Psychology']);
-            $this->transformInput($request, $inputData, 'preferred_payment_method', ['Cash', 'Credit/Debit Card', 'Mobile Payment App']);
+            $this->transformInput($request, $inputData, 'major', [
+                'Engineering', 'Business', 'Social Sciences', 'Psychology', 
+                'Computer Science', 'Biology', 'Economics', 'Mathematics', 
+                'Information Systems'
+            ]);
+            $this->transformInput($request, $inputData, 'preferred_payment_method', ['Cash', 'E-wallet', 'Credit Card']);
 
-            // 3. Kirim Request ke Flask API
             $response = Http::timeout(30)->post('http://127.0.0.1:5000/predict', $inputData);
 
-            $response->throw(); // Lempar exception jika status 4xx atau 5xx
+            $response->throw();
 
-            // 4. Jika berhasil, kembalikan view dengan hasil dan input lama
             return redirect('/calculate')
-    ->with([
-        'result' => $response->json()
-    ])
-    ->withInput($request->input());
+                ->with([
+                    'result' => $response->json()
+                ])
+                ->withInput($request->input());
 
         } catch (ConnectionException $e) {
             Log::error('Gagal terhubung ke Flask API: ' . $e->getMessage());
@@ -71,18 +71,13 @@ class PredictionController extends Controller
     }
 
     /**
-     * Helper untuk mengubah input tunggal menjadi beberapa kolom one-hot encoded.
-     * @param Request $request
-     * @param array &$data Referensi ke array data yang akan dikirim
-     * @param string $formKey Nama input di form (cth: 'gender')
-     * @param array $options Daftar nilai yang mungkin (cth: ['Female', 'Male'])
+     * Helper untuk One-Hot Encoding input dropdown.
      */
     private function transformInput(Request $request, array &$data, string $formKey, array $options)
     {
         $inputValue = $request->input($formKey);
         foreach ($options as $option) {
-            $apiKey = $formKey . '_' . $option;
-            $data[$apiKey] = ($inputValue === $option) ? 1 : 0;
+            $data[$formKey . '_' . $option] = ($inputValue === $option) ? 1 : 0;
         }
     }
 }
