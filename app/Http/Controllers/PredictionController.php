@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Log;
 
 class PredictionController extends Controller
 {
-    /**
-     * Menampilkan halaman form kalkulator budget.
-     */
     public function showForm()
     {
         return view('calculate');
@@ -39,7 +36,6 @@ class PredictionController extends Controller
                 'age' => (int) $request->input('age'),
             ];
 
-            // Transformasi dropdown menjadi format One-Hot Encoding
             $this->transformInput($request, $inputData, 'gender', ['Male', 'Female']);
             $this->transformInput($request, $inputData, 'year_in_school', ['Freshman', 'Sophomore', 'Junior', 'Senior']);
             $this->transformInput($request, $inputData, 'major', [
@@ -70,9 +66,6 @@ class PredictionController extends Controller
         }
     }
 
-    /**
-     * Helper untuk One-Hot Encoding input dropdown.
-     */
     private function transformInput(Request $request, array &$data, string $formKey, array $options)
     {
         $inputValue = $request->input($formKey);
