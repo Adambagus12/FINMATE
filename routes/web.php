@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PredictionController;
+
 
 Route::get('/', function () {
     return view('landing-page');
@@ -21,10 +23,13 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::get('/calculate', function () {
-        return view('calculate');  // buat file blade dashboard nanti
+        $result = session('result');
+    return view('calculate', compact('result'));
     })->name('calculate');
 
 
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/predict', [PredictionController::class, 'predict'])->name('predict');
+
 });
