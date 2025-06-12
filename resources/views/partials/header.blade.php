@@ -9,9 +9,9 @@
         @guest
         <nav class="hidden lg:flex gap-8 items-center">
             <a href="{{ url('/') }}" class="text-black font-medium hover:text-primary">Beranda</a>
-            <a href="#" class="text-black font-medium hover:text-primary">Tentang Kami</a>
-            <a href="#" class="text-black font-medium hover:text-primary">Testimoni</a>
-            <a href="#" class="text-black font-medium hover:text-primary">Kontak Kami</a>
+            <a href="#about" class="text-black font-medium hover:text-primary">Tentang Kami</a>
+            <a href="#testimonials" class="text-black font-medium hover:text-primary">Testimoni</a>
+            <a href="#contact" class="text-black font-medium hover:text-primary">Kontak Kami</a>
         </nav>
         @endguest
 
